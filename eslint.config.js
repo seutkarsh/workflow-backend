@@ -1,12 +1,12 @@
-import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
-import prettierPlugin from 'eslint-plugin-prettier';
-import typescriptParser from '@typescript-eslint/parser';
+const typescriptEslintPlugin = require('@typescript-eslint/eslint-plugin');
+const prettierPlugin = require('eslint-plugin-prettier');
+const typescriptParser = require('@typescript-eslint/parser');
 
 const config = [
   {
     files: ['*.ts', '*.js'],
     languageOptions: {
-      ecmaVersion: 'latest',
+      ecmaVersion: 2020,
       sourceType: 'module',
       parser: typescriptParser, // Set the TypeScript parser here
       globals: {
@@ -25,4 +25,4 @@ const config = [
   },
 ];
 
-export default config;
+module.exports = config;
