@@ -1,4 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
+import { connectToDatabase } from './database';
+import config from './config';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +20,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+connectToDatabase().then(() => {
+  app.listen(config.port, () => {
+    console.log(`Server is running on http://localhost:${config.port}`);
+  });
 });
